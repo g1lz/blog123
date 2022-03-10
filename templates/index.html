@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} News {% endblock %}
+
+{% block content %}
+
+{% if not newsdata %}
+<h1 class="mt-4">The blog is empty...</h1>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<a href="{{ url_for('add_news') }}" class="btn btn-warning mt-4 my_btn">New post</a>
+{% endif %}
+
+<div>
+    {% for item in newsdata|sort(reverse=True, attribute='id') %}
+    <article class="blog-post">
+        <h3 class="blog-post-title">{{ item.title }}</h3>
+        <p class="blog-post-meta">
+            {{ item.created_date.strftime("%B %d, %Y") }} by <span>{{ item.user.login }}</span>
+        </p>
+        <div class="blog-post-content">
+            {{ item.content }}
+        </div>
+        {% if current_user.is_authenticated and current_user == item.user %}
+        <div class="mt-3">
+            <a href="/news/{{ item.id }}" class="btn btn-secondary mr-2 my_btn">Edit</a>
+            <a href="/news_delete/{{ item.id }}" class="btn btn-danger my_btn">Delete</a>
+        </div>
+        {% endif %}
+    </article>
+    {% endfor %}
+</div>
+
+{% endblock %}

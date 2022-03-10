@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} News editing {% endblock %}
+
+{% block content %}
+
+<form method="post" class="news-edit-form" action="" novalidate>
+    <h1 class="h2 mb-3 text-center">News editing</h1>
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    <div class="form-group">
+        {{ form.title.label }}
+        {{ form.title(class="form-control") }}
+        {% for error in form.title.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        {{ form.content.label }}
+        {{ form.content(class="form-control", rows="5") }}
+        {% for error in form.content.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        <div class="custom-control custom-checkbox">
+            {{ form.is_private(class="custom-control-input") }}
+            {{ form.is_private.label(class="custom-control-label") }}
+        </div>
+    </div>
+    {{ form.submit(type="submit", class="btn btn-warning btn-lg btn-block") }}
+</form>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+.blog-post {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #ececec;
+    border-radius: 20px;
+}
+
+.blog-post-title {
+    font-weight: 400;
+}
+
+.registration-form {
+    padding: 30px 15px;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.blog-post-meta {
+    color: #666;
+}
+
+.blog-post-meta > span {
+    color: #0056b3;
+}
+
+.news-edit-form {
+    padding: 30px 15px;
+    max-width: 800px;
+    margin: 0 auto;
+
+}
+
+textarea {
+    min-height: 120px;
+}
+
+.my_btn {
+    border-radius: 18px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
